@@ -4,18 +4,34 @@
         num:$(".progress-half.number")[0]
     });
 
-    (function test (progressHalf){
+    let progressEasy = new ProgressEasy({
+        bar:$(".progress-easy.bar")[0],
+    });
+
+    (function testProgressHalf (progressHalf){
         progressHalf.start();
         setTimeout(()=>{
             progressHalf.run("end")
             setTimeout(()=>{
                 progressHalf.restore();
                 setTimeout(()=>{
-                    test(progressHalf);
+                    testProgressHalf(progressHalf);
                 },500)
             },1000)
         },3000)
-    })(progressHalf)
+    })(progressHalf);
     
+    (function testProgressEasy (progressEasy){
+        progressEasy.start();
+        setTimeout(()=>{
+            progressEasy.end();
+            setTimeout(()=>{
+                progressEasy.restore();
+                setTimeout(()=>{
+                    testProgressEasy(progressEasy);
+                },500)
+            },1000)
+        },3000)
+    })(progressEasy);
 
 })();

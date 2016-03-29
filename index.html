@@ -5,7 +5,7 @@
 <title>测试</title>
 </head>
 <style type="text/css">
-/* progress-bar-half */
+/* progress-half */
 .progress-half.outer{
     width: 100px;
     height: 4px;
@@ -50,6 +50,40 @@
     margin-left: 20px;
     transform: translate(0%,-20%);
 }
+
+/* progress-easy*/
+.progress-easy.outer{
+    width: 100px;
+    height: 4px;
+    background-color: #eeeeee;
+}
+.progress-easy.bar{
+    width: 0px;
+    height: 4px;
+    background-color: #82D465;
+}
+
+.progress-easy.bar.slow{
+    transition: width 10s;
+    -moz-transition: width 10s; /* Firefox 4 */
+    -webkit-transition: width 10s; /* Safari 和 Chrome */
+    -o-transition: width 10s; /* Opera */
+}
+
+.progress-easy.bar.fast{
+    transition: width 100ms;
+    -moz-transition: width 100ms; /* Firefox 4 */
+    -webkit-transition: width 100ms; /* Safari 和 Chrome */
+    -o-transition: width 100ms; /* Opera */
+}
+
+.progress-easy.bar.waiting{
+    width: 99%;
+}
+
+.progress-easy.bar.finish{
+    width: 100%;
+}
 </style>
 <body>
     <p>利用setTimeout完成计时，每次前进1/2</p>
@@ -58,6 +92,12 @@
             <div class="progress-half bar"></div>
         </div>
         <span class="progress-half number">0%</span>
+    </div>
+    <p>简易版，由外部css属性样式控制</p>
+    <div class="display-area">
+        <div class="progress-easy outer">
+            <div class="progress-easy bar"></div>
+        </div>
     </div>
 </body>
 <script src="//cdn.bootcss.com/require.js/2.1.22/require.js" data-main="/scripts/main"></script>

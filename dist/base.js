@@ -6,16 +6,33 @@
         num: $(".progress-half.number")[0]
     });
 
-    (function test(progressHalf) {
+    var progressEasy = new ProgressEasy({
+        bar: $(".progress-easy.bar")[0]
+    });
+
+    (function testProgressHalf(progressHalf) {
         progressHalf.start();
         setTimeout(function () {
             progressHalf.run("end");
             setTimeout(function () {
                 progressHalf.restore();
                 setTimeout(function () {
-                    test(progressHalf);
+                    testProgressHalf(progressHalf);
                 }, 500);
             }, 1000);
         }, 3000);
     })(progressHalf);
+
+    (function testProgressEasy(progressEasy) {
+        progressEasy.start();
+        setTimeout(function () {
+            progressEasy.end();
+            setTimeout(function () {
+                progressEasy.restore();
+                setTimeout(function () {
+                    testProgressEasy(progressEasy);
+                }, 500);
+            }, 1000);
+        }, 3000);
+    })(progressEasy);
 })();
